@@ -3,7 +3,8 @@ use yii\helpers\Url;
 /* @var $this yii\web\View */
 ?>
 
-<div id="main">
-
-Witaj
+<div id="main" class="container">
+	<div class="jumbotron">
+		Strona glowna
+	</div>
 </div>

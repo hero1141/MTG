@@ -24,7 +24,6 @@ class AppAsset extends AssetBundle
     public $js = [
         'js/jquery-3.0.0.min.js',
         'js/jquery-migrate-1.4.1.min.js',
-        'js/bootstrap.js',
         'js/main.js',
         'js/materialize.js',
     ];

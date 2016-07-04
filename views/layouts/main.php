@@ -8,6 +8,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 ?>
@@ -31,9 +32,27 @@ AppAsset::register($this);
     <div class="nav-wrapper">
       <a id="site/home" class="btn-floating btn-large waves-effect waves-light red">MTG</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a id="site/test">Sass</a></li>
-        <li><a id="site/logout">Logout</a></li>
-        <li><a id="site/login">Login</a></li>
+      <?php
+
+      if(Yii::$app->user->isGuest)
+      {
+        echo '
+            <li><a id="site/test">Sass</a></li>
+            <li><a id="site/signup">Rejestracja</a></li>
+            <li><a id="site/login">Logowanie</a></li>
+        ';
+
+      }
+      else
+      { echo '
+            <li><a id="site/test">Sass</a></li>
+            <li><a id="logout" href="?" data-method="POST">Wyloguj</a></li>
+            <li><a id="site/login">Brak</a></li>
+            ';
+      }
+
+       ?>
+       
       </ul>
     </div>
   </nav>
@@ -44,14 +63,31 @@ AppAsset::register($this);
         <?= $content ?>
     </div>
 </div>
-
-<footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
-    </div>
-</footer>
+  <footer class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Footer Content</h5>
+                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2016 MTG
+            <a class="grey-text text-lighten-4 right" href="#!">Github</a>
+            </div>
+          </div>
+        </footer>
 
 <?php $this->endBody() ?>
 </body>
